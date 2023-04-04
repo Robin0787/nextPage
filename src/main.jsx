@@ -1,8 +1,11 @@
-import { render } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { App } from './app';
+import App from './app';
 import About from './Components/About';
+import BookDetails from './Components/BookDetails';
 import Books from './Components/Books';
+import ErrorPage from './Components/ErrorPage';
 import Home from './Components/Home';
 import './index.css';
 
@@ -10,6 +13,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -17,7 +21,13 @@ const router = createBrowserRouter([
             },
             {
                 path: '/books',
-                element: <Books />
+                element: <Books />,
+                loader: () => fetch('https://api.itbook.store/1.0/new')
+            },
+            {
+                path: '/book/:bookID',
+                element: <BookDetails />,
+                loader: ({params}) => fetch(`https://api.itbook.store/1.0/books/${params.bookID}`)
             },
             {
                 path: '/about',
@@ -26,5 +36,8 @@ const router = createBrowserRouter([
         ]
     },
 ])
-
-render(<RouterProvider router={router}/>, document.getElementById('app'));
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+      <RouterProvider router={router}/>
+    </React.StrictMode>,
+  )
