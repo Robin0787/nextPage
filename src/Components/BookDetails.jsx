@@ -9,8 +9,8 @@ const BookDetails = () => {
     
 
     return (
-        <div className='shadow-md rounded-md flex flex-col md:flex-row gap-6 border h-[75vh] p-10'>
-            <div className='md:w-1/2 px-12 py-0 bg-gray-50'>
+        <div className='shadow-md rounded-md flex flex-col-reverse md:flex-row gap-6 border lg:h-[75vh] p-2'>
+            <div className='md:w-1/2 px-4 md:px-12 py-0 bg-gray-50'>
                 <img className='object-fit w-full h-full' src={image} />
             </div>
             <div className='md:w-1/2 p-6'>

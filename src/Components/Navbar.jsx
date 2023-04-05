@@ -18,7 +18,7 @@ const Navbar = () => {
                 </div>
                 {
                     isMenuOpen && (
-                        <div className='absolute shadow-md top-0 left-0 border-2 bg-white p-4 w-full space-y-8'>
+                        <div className='absolute z-10 shadow-md top-0 left-0 border-2 bg-white p-4 w-full space-y-8'>
                             <div className='flex justify-between items-center bg-gray-100 p-3'>
                                 <Link to='/' className='flex items-center justify-center'>
                                     <BoltIcon className='text-blue-600 h-6 w-6' />
